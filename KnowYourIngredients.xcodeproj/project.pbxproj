@@ -16,6 +16,7 @@
 		DE1179CB1DB4D43600389D44 /* KnowYourIngredientsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1179CA1DB4D43600389D44 /* KnowYourIngredientsUITests.m */; };
 		DE1179D61DB4E40E00389D44 /* sickface.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DE1179D51DB4E40E00389D44 /* sickface.jpg */; };
 		DE1179D81DB4E41300389D44 /* happyface.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DE1179D71DB4E41300389D44 /* happyface.jpg */; };
+		DEC4D6C11DB627F70087DFC6 /* Stats.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC4D6C01DB627F70087DFC6 /* Stats.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		DE1179CC1DB4D43600389D44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE1179D51DB4E40E00389D44 /* sickface.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sickface.jpg; path = ../../Desktop/sickface.jpg; sourceTree = "<group>"; };
 		DE1179D71DB4E41300389D44 /* happyface.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = happyface.jpg; path = ../../Desktop/happyface.jpg; sourceTree = "<group>"; };
+		DEC4D6BF1DB627F70087DFC6 /* Stats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stats.h; sourceTree = "<group>"; };
+		DEC4D6C01DB627F70087DFC6 /* Stats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stats.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,8 @@
 				DE1179B41DB4D43600389D44 /* AppDelegate.m */,
 				DE1179B61DB4D43600389D44 /* ViewController.h */,
 				DE1179B71DB4D43600389D44 /* ViewController.m */,
+				DEC4D6BF1DB627F70087DFC6 /* Stats.h */,
+				DEC4D6C01DB627F70087DFC6 /* Stats.m */,
 				DE1179B91DB4D43600389D44 /* Main.storyboard */,
 				DE1179BC1DB4D43600389D44 /* Assets.xcassets */,
 				DE1179BE1DB4D43600389D44 /* LaunchScreen.storyboard */,
@@ -220,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE1179B81DB4D43600389D44 /* ViewController.m in Sources */,
+				DEC4D6C11DB627F70087DFC6 /* Stats.m in Sources */,
 				DE1179B51DB4D43600389D44 /* AppDelegate.m in Sources */,
 				DE1179B21DB4D43600389D44 /* main.m in Sources */,
 			);
@@ -408,6 +414,7 @@
 				DE1179D11DB4D43600389D44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DE1179D21DB4D43600389D44 /* Build configuration list for PBXNativeTarget "KnowYourIngredientsUITests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +423,7 @@
 				DE1179D41DB4D43600389D44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Stats.h"
 
 @interface ViewController ()
 @property UILabel *ingredient;
@@ -16,7 +17,8 @@
 @property NSLayoutConstraint *yPositionConstraint;
 @property (weak, nonatomic) IBOutlet UIImageView *reaction;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property NSInteger score;
+@property Stats *gameStats;
+@property (weak, nonatomic) IBOutlet UILabel *streakLabel;
 
 @end
 
@@ -25,8 +27,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpIngredients];
-    self.score = 0;
-    self.scoreLabel.text = [NSString stringWithFormat:@"%ld", self.score];
+    self.gameStats = [Stats new];
+    [self.gameStats addObserver:self forKeyPath:@"score" options:NSKeyValueObservingOptionNew context:nil];
+    [self.gameStats addObserver:self forKeyPath:@"streak" options:NSKeyValueObservingOptionNew context:nil];
+
+    self.gameStats.score = 0;
+    self.gameStats.streak = 0;
     self.ingredient = [UILabel new];
     [self.view addSubview:self.ingredient];
     self.ingredient.text = self.allIngredients[arc4random_uniform([self.allIngredients count])];
@@ -38,6 +44,12 @@
 
 
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    self.scoreLabel.text =[NSString stringWithFormat:@"%ld", self.gameStats.score];
+    self.streakLabel.text = [NSString stringWithFormat:@"%ld", self.gameStats.streak];
+
 }
 
 - (void)addConstraints {
@@ -75,18 +87,19 @@
     self.yPositionConstraint.constant = pointPressed.y;
     if (sender.state == UIGestureRecognizerStateEnded) {
         if ((pointPressed.x < self.view.center.x && [self.glutenIngredients containsObject:self.ingredient.text]) || (pointPressed.x > self.view.center.x && ![self.glutenIngredients containsObject:self.ingredient.text])) {
-            NSLog(@"Picked wrong");
-            self.score += 100;
+            NSLog(@"Picked right");
+            self.gameStats.score += 100;
+            self.gameStats.streak += 1;
             self.reaction.image = [UIImage imageNamed:@"happyface.jpg"];
         } else {
-            NSLog(@"Picked right");
-            self.score -= 100;
+            NSLog(@"Picked wrong");
+            self.gameStats.streak = 0;
+            self.gameStats.score -= 100;
             self.reaction.image = [UIImage imageNamed:@"sickface.jpg"];
         }
         self.xPositionConstraint.constant = self.view.center.x;
         self.yPositionConstraint.constant = 130;
         self.ingredient.text = self.allIngredients[arc4random_uniform([self.allIngredients count])];
-        self.scoreLabel.text =[NSString stringWithFormat:@"%ld", self.score];
     }
 }
 
