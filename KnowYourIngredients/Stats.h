@@ -12,5 +12,6 @@
 
 @property NSInteger score;
 @property NSInteger streak;
+@property NSInteger highScore;
 
 @end
