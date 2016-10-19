@@ -31,7 +31,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVQ-DR-j3K">
-                                <rect key="frame" x="196" y="516" width="48" height="21"/>
+                                <rect key="frame" x="180" y="517" width="48" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -56,23 +56,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="streak:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gu-2Q-bcf">
-                                <rect key="frame" x="333" y="517" width="52" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNY-bE-GhU">
-                                <rect key="frame" x="453" y="35" width="109" height="30"/>
-                                <state key="normal" title="See Cheatsheet"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="high score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grj-nt-nPg">
-                                <rect key="frame" x="196" y="545" width="85" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eie-H5-fwv">
-                                <rect key="frame" x="294" y="546" width="67" height="19.5"/>
+                                <rect key="frame" x="322" y="518" width="52" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -83,14 +67,43 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNY-bE-GhU">
+                                <rect key="frame" x="453" y="35" width="109" height="30"/>
+                                <state key="normal" title="See Cheatsheet"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="high score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grj-nt-nPg">
+                                <rect key="frame" x="0.0" y="518" width="85" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eie-H5-fwv">
+                                <rect key="frame" x="112" y="519" width="67" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ISR-Ux-COE">
+                                <rect key="frame" x="57" y="37" width="89" height="29"/>
+                                <segments>
+                                    <segment title="Easy"/>
+                                    <segment title="Hard"/>
+                                </segments>
+                                <connections>
+                                    <action selector="controlValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="l4P-w0-gKT"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="iV9-dn-QZM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="77y-b3-Z26"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="grj-nt-nPg" secondAttribute="bottom" constant="33" id="9PG-Pc-ccs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2Rb-Xa-6CZ" secondAttribute="trailing" constant="40" id="Fgk-cD-HQa"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eie-H5-fwv" secondAttribute="bottom" constant="33" id="Fsr-Mc-Kp4"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mDf-zd-yWm" secondAttribute="bottom" constant="100" id="X7H-KS-Ef1"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XhT-9c-dPZ" secondAttribute="bottom" constant="30" id="diq-JN-zrN"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Izh-Xy-SAX" secondAttribute="bottom" constant="33" id="mdV-RB-HVc"/>
+                            <constraint firstItem="ISR-Ux-COE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="37" id="pmO-Ay-zb4"/>
                             <constraint firstItem="F3k-41-nQ8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="40" id="sMN-ri-isB"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4gu-2Q-bcf" secondAttribute="bottom" constant="33" id="sdh-4O-Fz6"/>
                             <constraint firstItem="mDf-zd-yWm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xGZ-wx-5bN"/>
@@ -101,6 +114,7 @@
                         <outlet property="highScoreLabel" destination="eie-H5-fwv" id="fQ2-lT-PGO"/>
                         <outlet property="reaction" destination="mDf-zd-yWm" id="SXc-pR-tUY"/>
                         <outlet property="scoreLabel" destination="XhT-9c-dPZ" id="MW9-Ld-qPp"/>
+                        <outlet property="segmentedControl" destination="ISR-Ux-COE" id="iII-Iv-dGU"/>
                         <outlet property="streakLabel" destination="Izh-Xy-SAX" id="Vcy-b9-gyg"/>
                     </connections>
                 </viewController>

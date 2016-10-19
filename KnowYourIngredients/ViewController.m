@@ -20,6 +20,8 @@
 @property Stats *gameStats;
 @property (weak, nonatomic) IBOutlet UILabel *streakLabel;
 @property (weak, nonatomic) IBOutlet UILabel *highScoreLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+- (IBAction)controlValueChanged:(id)sender;
 
 @end
 
@@ -28,8 +30,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self restoreSettings];
     [self setUpIngredients];
     [self setUpStats];
+    self.ingredient = [UILabel new];
+    [self.view addSubview:self.ingredient];
     [self presentIngredient];
     [self addConstraints];
     [self addPanRecognizer];
@@ -49,9 +54,10 @@
 - (void)presentIngredient {
     self.xPositionConstraint.constant = self.view.center.x;
     self.yPositionConstraint.constant = 130;
-    self.ingredient = [UILabel new];
-    [self.view addSubview:self.ingredient];
-    self.ingredient.text = self.allIngredients[arc4random_uniform([self.allIngredients count])];
+    NSInteger randomIndex = arc4random_uniform((unsigned int)[self.allIngredients count]);
+    NSString *ingredient = [self.allIngredients objectAtIndex:randomIndex];
+    self.ingredient.text = ingredient;
+    NSLog(@"testing");
 }
 
 - (void)addPanRecognizer {
@@ -95,8 +101,14 @@
 }
 
 - (void)setUpIngredients {
-    self.glutenIngredients = [NSArray arrayWithObjects: @"wheat", @"oats", @"barley", @"rye", NULL];
-    self.allIngredients = [NSArray arrayWithObjects: @"wheat", @"oats", @"barley", @"rye", @"rice", @"potatoes", @"corn", @"buckwheat", NULL];
+    if (self.segmentedControl.selectedSegmentIndex == 0){
+        self.glutenIngredients = [NSArray arrayWithObjects: @"wheat", @"oats", @"barley", @"rye", NULL];
+        self.allIngredients = [NSArray arrayWithObjects: @"wheat", @"oats", @"barley", @"rye", @"rice", @"potatoes", @"corn", @"buckwheat", NULL];
+    } else {
+        self.glutenIngredients = [NSArray arrayWithObjects: @"wheat", @"oats", @"barley", @"rye",
+                                  @"yeast", @"Bulgur", @"Durum", @"Farro/faro", @"Spelt", @"dinkel", @"Graham flour", @"Hydrolyzed wheat protein", @"Kamut", @"Malt, malt extract, malt syrup, malt flavoring", @"Malt vinegar", @"Malted milk", @"Matzo", @"Modified wheat starch", @"Oatmeal", @"Seitan", @"Semolina", @"Triticale", @"Wheat bran", @"Wheat flour", @"Wheat germ", @"Wheat starch", @"Atta", @"Chapati flour", @"Einkorn", @"Emmer", @"Farina", @"Fu", NULL];
+        self.allIngredients = [NSArray arrayWithObjects: @"corn starch", @"grits", @"hominy", @"polenta", @"maltodextrin", @"arrowroot", @"tapioca", @"manioc flour", @"guar gum", @"hydrolyzed soy protein", @"lethicin", @"millet", @"mono and diglycerides", @"montina", @"MSG", @"Oat gum", @"Quinoa", @"Sorghum", @"Soy", @"Starch", @"Teff", @"Vinegar", @"Whey", @"Xanthan gum", @"Yeast", @"Brewer's yeast", @"Bulgur", @"Durum", @"Farro/faro", @"Spelt", @"dinkel", @"Graham flour", @"Hydrolyzed wheat protein", @"Kamut", @"Malt, malt extract, malt syrup, malt flavoring", @"Malt vinegar", @"Malted milk", @"Matzo", @"Modified wheat starch", @"Oatmeal", @"Seitan", @"Semolina", @"Triticale", @"Wheat bran", @"Wheat flour", @"Wheat germ", @"Wheat starch", @"Atta", @"Chapati flour", @"Einkorn", @"Emmer", @"Farina", @"Fu", NULL];
+    }
 }
 
 - (void)handlePanGesture:(UIPanGestureRecognizer *)sender {
@@ -130,4 +142,13 @@
     [super didReceiveMemoryWarning];
 }
 
+- (IBAction)controlValueChanged:(id)sender {
+    NSInteger selectedSegment = ((UISegmentedControl *)sender).selectedSegmentIndex;
+    [[NSUserDefaults standardUserDefaults] setInteger:selectedSegment forKey:@"SelectedSegmentIndex"];
+    [self setUpIngredients];
+}
+
+- (void)restoreSettings {
+    self.segmentedControl.selectedSegmentIndex = [[NSUserDefaults standardUserDefaults] integerForKey:@"SelectedSegmentIndex"];
+}
 @end
