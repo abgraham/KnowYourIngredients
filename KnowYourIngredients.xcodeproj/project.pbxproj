@@ -18,6 +18,7 @@
 		DE1179D81DB4E41300389D44 /* happyface.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DE1179D71DB4E41300389D44 /* happyface.jpg */; };
 		DEC4D6C11DB627F70087DFC6 /* Stats.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC4D6C01DB627F70087DFC6 /* Stats.m */; };
 		DEC4D6C41DB6358C0087DFC6 /* CheatSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC4D6C31DB6358C0087DFC6 /* CheatSheet.m */; };
+		DEF99F0B1DC65EA300D436A8 /* KnowYourIngredientsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF99F0A1DC65EA300D436A8 /* KnowYourIngredientsAPI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,8 @@
 		DEC4D6C01DB627F70087DFC6 /* Stats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stats.m; sourceTree = "<group>"; };
 		DEC4D6C21DB6358C0087DFC6 /* CheatSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheatSheet.h; sourceTree = "<group>"; };
 		DEC4D6C31DB6358C0087DFC6 /* CheatSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheatSheet.m; sourceTree = "<group>"; };
+		DEF99F091DC65EA300D436A8 /* KnowYourIngredientsAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowYourIngredientsAPI.h; sourceTree = "<group>"; };
+		DEF99F0A1DC65EA300D436A8 /* KnowYourIngredientsAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowYourIngredientsAPI.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +100,8 @@
 				DE1179B41DB4D43600389D44 /* AppDelegate.m */,
 				DE1179B61DB4D43600389D44 /* ViewController.h */,
 				DE1179B71DB4D43600389D44 /* ViewController.m */,
+				DEF99F091DC65EA300D436A8 /* KnowYourIngredientsAPI.h */,
+				DEF99F0A1DC65EA300D436A8 /* KnowYourIngredientsAPI.m */,
 				DEC4D6BF1DB627F70087DFC6 /* Stats.h */,
 				DEC4D6C01DB627F70087DFC6 /* Stats.m */,
 				DE1179B91DB4D43600389D44 /* Main.storyboard */,
@@ -230,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE1179B81DB4D43600389D44 /* ViewController.m in Sources */,
+				DEF99F0B1DC65EA300D436A8 /* KnowYourIngredientsAPI.m in Sources */,
 				DEC4D6C11DB627F70087DFC6 /* Stats.m in Sources */,
 				DEC4D6C41DB6358C0087DFC6 /* CheatSheet.m in Sources */,
 				DE1179B51DB4D43600389D44 /* AppDelegate.m in Sources */,

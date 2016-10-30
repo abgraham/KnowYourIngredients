@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "Stats.h"
+#import "KnowYourIngredientsAPI.h"
 
 @interface ViewController ()
 @property UILabel *ingredient;
@@ -57,7 +58,6 @@
     NSInteger randomIndex = arc4random_uniform((unsigned int)[self.allIngredients count]);
     NSString *ingredient = [self.allIngredients objectAtIndex:randomIndex];
     self.ingredient.text = ingredient;
-    NSLog(@"testing");
 }
 
 - (void)addPanRecognizer {
@@ -101,19 +101,18 @@
 }
 
 - (void)setUpIngredients {
+    KnowYourIngredientsAPI *sharedInstance = [KnowYourIngredientsAPI sharedInstance];
     if (self.segmentedControl.selectedSegmentIndex == 0){
-        self.glutenIngredients = [NSArray arrayWithObjects: @"wheat", @"oats", @"barley", @"rye", NULL];
-        self.allIngredients = [NSArray arrayWithObjects: @"wheat", @"oats", @"barley", @"rye", @"rice", @"potatoes", @"corn", @"buckwheat", NULL];
+        self.glutenIngredients = [sharedInstance getEasyGlutenIngredients];
+        self.allIngredients = [sharedInstance getEasyAllIngredients];
     } else {
-        self.glutenIngredients = [NSArray arrayWithObjects: @"wheat", @"oats", @"barley", @"rye",
-                                  @"yeast", @"Bulgur", @"Durum", @"Farro/faro", @"Spelt", @"dinkel", @"Graham flour", @"Hydrolyzed wheat protein", @"Kamut", @"Malt, malt extract, malt syrup, malt flavoring", @"Malt vinegar", @"Malted milk", @"Matzo", @"Modified wheat starch", @"Oatmeal", @"Seitan", @"Semolina", @"Triticale", @"Wheat bran", @"Wheat flour", @"Wheat germ", @"Wheat starch", @"Atta", @"Chapati flour", @"Einkorn", @"Emmer", @"Farina", @"Fu", NULL];
-        self.allIngredients = [NSArray arrayWithObjects: @"corn starch", @"grits", @"hominy", @"polenta", @"maltodextrin", @"arrowroot", @"tapioca", @"manioc flour", @"guar gum", @"hydrolyzed soy protein", @"lethicin", @"millet", @"mono and diglycerides", @"montina", @"MSG", @"Oat gum", @"Quinoa", @"Sorghum", @"Soy", @"Starch", @"Teff", @"Vinegar", @"Whey", @"Xanthan gum", @"Yeast", @"Brewer's yeast", @"Bulgur", @"Durum", @"Farro/faro", @"Spelt", @"dinkel", @"Graham flour", @"Hydrolyzed wheat protein", @"Kamut", @"Malt, malt extract, malt syrup, malt flavoring", @"Malt vinegar", @"Malted milk", @"Matzo", @"Modified wheat starch", @"Oatmeal", @"Seitan", @"Semolina", @"Triticale", @"Wheat bran", @"Wheat flour", @"Wheat germ", @"Wheat starch", @"Atta", @"Chapati flour", @"Einkorn", @"Emmer", @"Farina", @"Fu", NULL];
+        self.glutenIngredients = [sharedInstance getHardGlutenIngredients];
+        self.allIngredients = [sharedInstance getAllHardIngredients];
     }
 }
 
 - (void)handlePanGesture:(UIPanGestureRecognizer *)sender {
     CGPoint pointPressed = [sender locationInView:self.view];
-    NSLog(@"%f", pointPressed.x);
     self.xPositionConstraint.constant = pointPressed.x;
     self.yPositionConstraint.constant = pointPressed.y;
     if (sender.state == UIGestureRecognizerStateEnded) {
