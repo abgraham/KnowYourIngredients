@@ -10,12 +10,16 @@
 #import "Stats.h"
 #import "KnowYourIngredientsAPI.h"
 
-@interface ViewController ()
-@property UILabel *ingredient;
-@property NSArray *glutenIngredients;
-@property NSArray *allIngredients;
-@property NSLayoutConstraint *xPositionConstraint;
-@property NSLayoutConstraint *yPositionConstraint;
+@interface ViewController () {
+
+UILabel *ingredient;
+NSArray *glutenIngredients;
+NSArray *allIngredients;
+NSLayoutConstraint *xPositionConstraint;
+NSLayoutConstraint *yPositionConstraint;
+
+}
+
 @property (weak, nonatomic) IBOutlet UIImageView *reaction;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property Stats *gameStats;
@@ -34,8 +38,8 @@
     [self restoreSettings];
     [self setUpIngredients];
     [self setUpStats];
-    self.ingredient = [UILabel new];
-    [self.view addSubview:self.ingredient];
+    ingredient = [UILabel new];
+    [self.view addSubview:ingredient];
     [self presentIngredient];
     [self addConstraints];
     [self addPanRecognizer];
@@ -53,11 +57,11 @@
 }
 
 - (void)presentIngredient {
-    self.xPositionConstraint.constant = self.view.center.x;
-    self.yPositionConstraint.constant = 130;
-    NSInteger randomIndex = arc4random_uniform((unsigned int)[self.allIngredients count]);
-    NSString *ingredient = [self.allIngredients objectAtIndex:randomIndex];
-    self.ingredient.text = ingredient;
+    xPositionConstraint.constant = self.view.center.x;
+    yPositionConstraint.constant = 130;
+    NSInteger randomIndex = arc4random_uniform((unsigned int)[allIngredients count]);
+    NSString *ingredientString = [allIngredients objectAtIndex:randomIndex];
+    ingredient.text = ingredientString;
 }
 
 - (void)addPanRecognizer {
@@ -76,11 +80,11 @@
 }
 
 - (void)addConstraints {
-    self.ingredient.translatesAutoresizingMaskIntoConstraints = NO;
+    ingredient.translatesAutoresizingMaskIntoConstraints = NO;
     self.view.translatesAutoresizingMaskIntoConstraints = NO;
 
-    self.yPositionConstraint =  [NSLayoutConstraint
-                                 constraintWithItem:self.ingredient
+    yPositionConstraint =  [NSLayoutConstraint
+                                 constraintWithItem:ingredient
                                  attribute:NSLayoutAttributeCenterY
                                  relatedBy:NSLayoutRelationEqual
                                  toItem:self.view
@@ -88,35 +92,35 @@
                                  multiplier:1.0
                                  constant:130];
 
-    self.xPositionConstraint = [NSLayoutConstraint
-                                constraintWithItem:self.ingredient
+    xPositionConstraint = [NSLayoutConstraint
+                                constraintWithItem:ingredient
                                 attribute:NSLayoutAttributeCenterX
                                 relatedBy:NSLayoutRelationEqual
                                 toItem:self.view
                                 attribute:NSLayoutAttributeLeft
                                 multiplier:1.0
                                 constant:([UIScreen mainScreen].bounds.size.width/2)];
-    [self.view addConstraint:self.yPositionConstraint];
-    [self.view addConstraint:self.xPositionConstraint];
+    [self.view addConstraint:yPositionConstraint];
+    [self.view addConstraint:xPositionConstraint];
 }
 
 - (void)setUpIngredients {
     KnowYourIngredientsAPI *sharedInstance = [KnowYourIngredientsAPI sharedInstance];
     if (self.segmentedControl.selectedSegmentIndex == 0){
-        self.glutenIngredients = [sharedInstance getEasyGlutenIngredients];
-        self.allIngredients = [sharedInstance getEasyAllIngredients];
+        glutenIngredients = [sharedInstance getEasyGlutenIngredients];
+        allIngredients = [sharedInstance getEasyAllIngredients];
     } else {
-        self.glutenIngredients = [sharedInstance getHardGlutenIngredients];
-        self.allIngredients = [sharedInstance getAllHardIngredients];
+        glutenIngredients = [sharedInstance getHardGlutenIngredients];
+        allIngredients = [sharedInstance getAllHardIngredients];
     }
 }
 
 - (void)handlePanGesture:(UIPanGestureRecognizer *)sender {
     CGPoint pointPressed = [sender locationInView:self.view];
-    self.xPositionConstraint.constant = pointPressed.x;
-    self.yPositionConstraint.constant = pointPressed.y;
+    xPositionConstraint.constant = pointPressed.x;
+    yPositionConstraint.constant = pointPressed.y;
     if (sender.state == UIGestureRecognizerStateEnded) {
-        if ((pointPressed.x < self.view.center.x && [self.glutenIngredients containsObject:self.ingredient.text]) || (pointPressed.x > self.view.center.x && ![self.glutenIngredients containsObject:self.ingredient.text])) {
+        if ((pointPressed.x < self.view.center.x && [glutenIngredients containsObject:ingredient.text]) || (pointPressed.x > self.view.center.x && ![glutenIngredients containsObject:ingredient.text])) {
             self.gameStats.score += 100;
             self.gameStats.streak += 1;
             self.reaction.image = [UIImage imageNamed:@"happyface.jpg"];
